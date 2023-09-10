@@ -1,19 +1,19 @@
 package main
 
 import (
-	"log"
-	"net/http"
-
+	"github.com/gin-gonic/gin"
 	"github.com/hassan-algo/golook/components"
-	"github.com/hassan-algo/golook/pages"
+	"github.com/hassan-algo/golook/page"
 )
 
 func main() {
+	r := gin.Default()
 
-	home := pages.CreatePages(components.Home())
-	http.HandleFunc("/", home.PageHandler)
+	home := page.CreatePage(components.Home())
+	r.GET("/", home.PageHandler)
 
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		log.Fatal(err)
-	}
+	about := page.CreatePage(components.About())
+	r.GET("/about", about.PageHandler)
+
+	r.Run(":8080")
 }

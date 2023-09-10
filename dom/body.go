@@ -7,7 +7,7 @@ import (
 	"github.com/hassan-algo/golook/debugger"
 )
 
-type Div struct {
+type Body struct {
 	ClassName string
 	Id        string
 	Style     []attributes.Style
@@ -15,20 +15,20 @@ type Div struct {
 	Inner     []debugger.Debugger
 }
 
-func (d Div) Convert() string {
-	myDom := fmt.Sprintf("<div id=\"%s\" class=\"%s\" style=\"%s\">", d.Id, d.ClassName, d.Style)
-	if d.Inner != nil {
-		for _, myInner := range d.Inner {
+func (b Body) Convert() string {
+	myDom := fmt.Sprintf("<body class=\"%s\" style=\"%s\">", b.ClassName, b.GetStyles())
+	if b.Inner != nil {
+		for _, myInner := range b.Inner {
 			myDom += fmt.Sprintf("%s", myInner.Convert())
 		}
 	}
-	myDom += fmt.Sprintf("</div>")
+	myDom += fmt.Sprintf("</body>")
 	return myDom
 }
 
-func (d Div) GetStyles() string {
+func (b Body) GetStyles() string {
 	style := ""
-	for _, s := range d.Style {
+	for _, s := range b.Style {
 		style += s.GetStyles()
 	}
 	return style[:len(style)-1]
