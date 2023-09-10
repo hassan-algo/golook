@@ -3,7 +3,7 @@ package dom
 import (
 	"fmt"
 
-	debugger "github.com/hassan-algo/golook/debugger"
+	debugger "github.com/hassan-algo/golook/Debugger"
 )
 
 type Div struct {
