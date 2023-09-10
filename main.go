@@ -1,19 +1,16 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"github.com/hassan-algo/golook/components"
 	"github.com/hassan-algo/golook/page"
+	"github.com/hassan-algo/golook/server"
 )
 
 func main() {
-	r := gin.Default()
+	s := server.CreateNewServer()
 
-	home := page.CreatePage(components.Home())
-	r.GET("/", home.PageHandler)
+	s.CreatePage("/", page.CreatePage(components.Home()))
+	s.CreatePage("/about", page.CreatePage(components.About()))
 
-	about := page.CreatePage(components.About())
-	r.GET("/about", about.PageHandler)
-
-	r.Run(":8080")
+	s.Start(":8080")
 }
