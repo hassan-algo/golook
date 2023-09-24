@@ -8,5 +8,5 @@ type Style struct {
 }
 
 func (s Style) GetStyles() string {
-	return fmt.Sprintf("%s:%s,", s.Name, s.Value)
+	return fmt.Sprintf("%s:%s;", s.Name, s.Value)
 }

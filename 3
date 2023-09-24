@@ -1,0 +1,27 @@
+package main
+
+import (
+	"github.com/hassan-algo/golook/components"
+	"github.com/hassan-algo/golook/dom"
+	"github.com/hassan-algo/golook/page"
+	"github.com/hassan-algo/golook/server"
+)
+
+func main() {
+	s := server.CreateNewServer()
+
+	head := dom.Head{
+		Charset: "UTF-8",
+		Title: "Hassan",
+		Metas: []Metas{
+			&Meta{
+				Name:"",
+				Content:"",
+			},
+		},
+	}
+	s.CreatePage("/", page.CreatePage(components.Home()))
+	s.CreatePage("/about", page.CreatePage(components.About()))
+
+	s.Start(":8080")
+}

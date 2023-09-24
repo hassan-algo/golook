@@ -1,15 +1,12 @@
 package components
 
 import (
-	"fmt"
-
 	"github.com/hassan-algo/golook/attributes"
 	"github.com/hassan-algo/golook/debugger"
 	"github.com/hassan-algo/golook/dom"
 )
 
 func Home() debugger.Debugger {
-	fmt.Println("HOME")
 	return dom.Body{
 		Style: []attributes.Style{
 			{
@@ -21,12 +18,7 @@ func Home() debugger.Debugger {
 				Id: "nais",
 				Inner: []debugger.Debugger{
 					&dom.Div{
-						ClassName: "nais1",
-						Style: []attributes.Style{
-							{
-								"background-color", "red",
-							},
-						},
+						ClassName: "nais1 text-red-500",
 						Inner: []debugger.Debugger{
 							&dom.P{
 								Text: "hello world",
@@ -48,8 +40,19 @@ func Home() debugger.Debugger {
 						ClassName: "links",
 						Inner: []debugger.Debugger{
 							&dom.A{
+								ClassName: "bg-red-500",
+								Style: []attributes.Style{
+									{
+										"text-decoration", "none",
+									},
+								},
 								Href: "./about",
-								Text: "About",
+								Inner: []debugger.Debugger{
+									&dom.P{
+										ClassName: "bg-red-500",
+										Text:      "About",
+									},
+								},
 							},
 						},
 					},
@@ -61,11 +64,7 @@ func Home() debugger.Debugger {
 
 func myName() debugger.Debugger {
 	return &dom.P{
-		Text: "Hassan Anwar",
-		Style: []attributes.Style{
-			{
-				"background-color", "yellow",
-			},
-		},
+		ClassName: "bg-yellow-500",
+		Text:      "Hassan Anwar",
 	}
 }

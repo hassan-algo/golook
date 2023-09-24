@@ -31,5 +31,8 @@ func (b Body) GetStyles() string {
 	for _, s := range b.Style {
 		style += s.GetStyles()
 	}
+	if style == "" {
+		return style
+	}
 	return style[:len(style)-1]
 }
